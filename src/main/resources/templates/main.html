@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Hello User!</title>
+    <style type="text/css">
+        .block1 {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<div>
+    <div class="block1">
+        <form th:action="@{/create}" method="get">
+            <input type="submit" value="Create notebook">
+        </form>
+
+        <br>
+        <form th:action="@{/}" method="get">
+            <input type="submit" value="Get all notebooks">
+        </form>
+
+        <br>
+        <form th:action="@{/getAllSortedNameManufactures}" method="get">
+            <input type="submit" value="Get all laptops by name manufacturer">
+        </form>
+
+        <br>
+        <form th:action="@{/getLaptopsByMemory}" method="get">
+            <input type="submit" value="Laptops with memory greater than 16">
+        </form>
+
+        <br>
+        <form th:action="@{/getLaptopsUsed}" method="get">
+            <input type="submit" value="Laptops used">
+        </form>
+
+    </div>
+
+    <table border="1" class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Model</th>
+            <th>Manufacturer</th>
+            <th>Processor</th>
+            <th>Memory</th>
+            <th>Used</th>
+            <th>Price</th>
+            <th>Date</th>
+        </tr>
+        <tr th:each="laptop: ${laptops}">
+            <td th:text="${laptop.id}"/>
+            <td th:text="${laptop.model}"/>
+            <td th:text="${laptop.manufacturer}"/>
+            <td th:text="${laptop.processor}"/>
+            <td th:text="${laptop.memory}"/>
+            <td th:text="${laptop.used}"/>
+            <td th:text="${laptop.price}"/>
+            <td th:text="${laptop.dateOfIssue}"/>
+
+        </tr>
+    </table>
+</body>
+</html>
